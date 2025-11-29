@@ -1,4 +1,4 @@
-# Application Structure Overview
+It # Application Structure Overview
 
 This document describes the current structure of the `burkhalter-computer-game` repository and the `rts-client` browser game.
 

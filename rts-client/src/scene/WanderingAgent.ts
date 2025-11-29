@@ -11,12 +11,13 @@ const WORLD_HALF_EXTENT = 30;
 const WORLD_PADDING = 4;
 
 export class WanderingAgent {
+    private readonly root: TransformNode;
+    private readonly color: Color3;
     private target?: Vector3;
 
-    public constructor(
-        private readonly root: TransformNode,
-        private readonly color: Color3
-    ) {
+    public constructor(root: TransformNode, color: Color3) {
+        this.root = root;
+        this.color = color;
         this.createBodyMeshes();
     }
 

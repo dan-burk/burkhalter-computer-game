@@ -1,6 +1,6 @@
 import './style.css';
 import { Engine } from '@babylonjs/core/Engines/engine';
-import { createScene, SceneObjects } from './scene/createScene';
+import { createScene, type SceneObjects } from './scene/createScene';
 
 const container = document.querySelector<HTMLDivElement>('#app');
 
