@@ -1,13 +1,13 @@
-# Game Stack: Browser-Based 2D RTS
+# Game Stack: Browser-Based 3D Prototype
 
-This project targets a **2D RTS in the browser**, using a stack that works well with AI helpers and ARM64 Windows.
+This project now targets a **3D RTS prototype in the browser**, using a stack that works well with AI helpers and ARM64 Windows.
 
 ## Tech Stack Overview
 
 - **Runtime / Tooling:** Node.js (LTS, ARM64 build) + npm
 - **Language:** TypeScript
 - **Bundler / Dev Server:** Vite
-- **Game Library:** Phaser 3 (2D game engine)
+- **Game Library:** Babylon.js (3D engine)
 - **Editor:** VS Code (with TypeScript + ESLint extensions)
 
 ## Prerequisites (Install Once)
@@ -35,8 +35,8 @@ npm create vite@latest . -- --template vanilla-ts
 # Install dependencies
 npm install
 
-# Add Phaser
-npm install phaser
+# Add Babylon.js
+npm install @babylonjs/core
 ```
 
 If `npm create vite@latest .` asks to overwrite files, you can instead create a subfolder:
@@ -45,7 +45,7 @@ If `npm create vite@latest .` asks to overwrite files, you can instead create a 
 npm create vite@latest rts-client -- --template vanilla-ts
 cd rts-client
 npm install
-npm install phaser
+npm install @babylonjs/core
 ```
 
 ## Development & Build Commands
@@ -64,4 +64,3 @@ npm run preview
 ```
 
 These are the core commands AI helpers will assume when generating code snippets or instructions for this project.
-
