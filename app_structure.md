@@ -27,6 +27,8 @@ Within `rts-client/`:
     - `map/` – world and terrain configuration.
       - `MapConfig.ts` – shared constants for tile size and world dimensions.
       - `DesertMap.ts` – helper to draw the base desert background.
+    - `units/` – unit entities and behaviors.
+      - `Unit.ts` – simple wandering units and factory for spawning multiple instances.
   - (legacy Vite starter files like `counter.ts` and `typescript.svg` can be removed once no longer needed.)
 
 ## Future Additions (Recommended)

@@ -1,6 +1,11 @@
 export const TILE_SIZE = 64;
-export const MAP_WIDTH_TILES = 128;
-export const MAP_HEIGHT_TILES = 128;
 
-export const WORLD_WIDTH = TILE_SIZE * MAP_WIDTH_TILES;
-export const WORLD_HEIGHT = TILE_SIZE * MAP_HEIGHT_TILES;
+const VIEWPORT_WIDTH =
+    typeof window !== 'undefined' ? window.innerWidth : 1280;
+const VIEWPORT_HEIGHT =
+    typeof window !== 'undefined' ? window.innerHeight : 720;
+
+const SCALE_UP_FACTOR = 1.2;
+
+export const WORLD_WIDTH = Math.ceil(VIEWPORT_WIDTH * SCALE_UP_FACTOR);
+export const WORLD_HEIGHT = Math.ceil(VIEWPORT_HEIGHT * SCALE_UP_FACTOR);

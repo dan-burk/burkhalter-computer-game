@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import { WORLD_HEIGHT, WORLD_WIDTH } from '../map/MapConfig';
 import { createDesertBackground } from '../map/DesertMap';
+import { createUnits, Unit } from '../units/Unit';
 
 export class GameScene extends Phaser.Scene {
     private isDragging = false;
@@ -13,18 +14,29 @@ export class GameScene extends Phaser.Scene {
 
     private readonly edgePanThreshold = 24;
 
+    private pointerInsideGame = false;
+
+    private units: Unit[] = [];
+
     public constructor() {
         super('GameScene');
     }
 
     public create(): void {
         this.cameras.main.setBounds(0, 0, WORLD_WIDTH, WORLD_HEIGHT);
+        this.physics.world.setBounds(0, 0, WORLD_WIDTH, WORLD_HEIGHT);
+
         createDesertBackground(this);
+        this.units = createUnits(this);
         this.setupMousePanning();
+        this.setupPointerPresenceTracking();
     }
 
     public update(): void {
         this.applyEdgeScrolling();
+        this.units.forEach((unit) =>
+            unit.update(this.game.loop.delta / 1000)
+        );
     }
 
     private setupMousePanning(): void {
@@ -79,6 +91,10 @@ export class GameScene extends Phaser.Scene {
     }
 
     private applyEdgeScrolling(): void {
+        if (!this.pointerInsideGame) {
+            return;
+        }
+
         const pointer = this.input.activePointer;
         const camera = this.cameras.main;
 
@@ -122,5 +138,17 @@ export class GameScene extends Phaser.Scene {
             0,
             WORLD_HEIGHT - camera.height
         );
+    }
+
+    private setupPointerPresenceTracking(): void {
+        this.pointerInsideGame = this.input.manager.isOver;
+
+        this.input.on('gameover', () => {
+            this.pointerInsideGame = true;
+        });
+
+        this.input.on('gameout', () => {
+            this.pointerInsideGame = false;
+        });
     }
 }
