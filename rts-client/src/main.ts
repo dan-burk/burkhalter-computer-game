@@ -1,6 +1,7 @@
 import './style.css';
 import { Engine } from '@babylonjs/core/Engines/engine';
 import { createScene, type SceneObjects } from './scene/createScene';
+import { GameState } from './game/GameState';
 
 const container = document.querySelector<HTMLDivElement>('#app');
 
@@ -15,12 +16,14 @@ canvas.setAttribute('role', 'presentation');
 container.appendChild(canvas);
 
 const engine = new Engine(canvas, true);
-const sceneObjects: SceneObjects = createScene(engine, canvas);
+const gameState = new GameState();
+const sceneObjects: SceneObjects = createScene(engine, canvas, gameState);
 engine.resize();
 
 engine.runRenderLoop(() => {
     const deltaSeconds = engine.getDeltaTime() / 1000;
-    sceneObjects.agents.forEach((agent) => agent.update(deltaSeconds));
+    gameState.update(deltaSeconds);
+    sceneObjects.syncFromGameState(gameState);
     sceneObjects.scene.render();
 });
 

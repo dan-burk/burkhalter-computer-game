@@ -46,3 +46,20 @@ If you use another tool (e.g., engine GUI, `npm`, `dotnet`, `python`), wire it i
 - AI assistants must follow these guidelines and prefer minimal, focused edits.
 - Do not assume undocumented build commands exist; when adding or changing them, update both this file and `README.md`.
 
+## Current State (RTS Prototype)
+
+- Engine: Vite + TypeScript + Babylon.js under `rts-client/`.
+- Camera: ArcRotate camera locked to a fixed isometric angle; left-drag pans north/south/east/west, scroll wheel zooms, rotation disabled so the map stays fixed.
+- Units: Wandering agents now use low-poly humanoid meshes (torso, legs, arms, hands, head, tapered beard) with simple materials for cloth, pants, skin, and beard. Movement is still random wandering across the ground plane.
+- Scene: Flat ground plane with hemispheric light and two wandering agents spawned at opposite sides.
+
+## Near-Term Goals
+
+- Add simple walk/idle animation hints (leg swing or arm sway) to make movement feel alive.
+- Introduce unit variety (height/colors/headgear) and optional accessories without complex rigging.
+- Expand camera polish (keyboard pan, edge scroll, movement bounds) as the environment grows.
+- Surface basic controls in UI/README for new testers (drag to pan, scroll to zoom).
+
+## Long-Term Vision
+
+- Grow the RTS prototype into our own small blend of **Stronghold Crusader**, **Age of Empires**, and **Catan** – combining base-building and territorial control with resource-focused, boardgame-style economy and trading.
